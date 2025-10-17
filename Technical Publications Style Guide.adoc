@@ -222,4 +222,4 @@ Content-Type: application/json
 * US units first; SI in parentheses.
 * Use exact UI labels; avoid jargon.
 * Follow brand voice: warm, crisp, helpful.
-* Don’t paraphrase standards; cite approved regulatory text.
+* Don’t paraphrase standards; cite approved regulatory text and always get approval from the Compliance team.
