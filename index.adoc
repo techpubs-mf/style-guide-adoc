@@ -1,0 +1,7 @@
+= My Asciidoc Site
+HID Tech Pubs
+:toc:
+:icons: font
+
+== Welcome
+This is a simple site built with Asciidoc and GitHub Pages.
