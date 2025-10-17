@@ -1,0 +1,225 @@
+:nofooter:
+= HID Technical Publications Style Guide
+Version: 1.0
+Owner: Technical Publications
+Effective: October 17, 2025
+Language: US English
+
+---
+
+== Purpose and scope
+The HID Technical Publications (Tech Pubs) Style Guide is the writing style reference for HID customer-facing technical documentation (tech docs) and is intended for anyone who writes or edits such content. Refer to the HID Tech Pubs Style Guide when you develop content for HID tech docs or write text for a HID product.
+
+The HID Tech Pubs Style Guide provides usage rules, best practices, punctuation guidelines, text formatting guidance, and more:
+
+* Terms to use and avoid
+* Voice and tone of HID docs
+* The correct way to format links
+* The correct way to write about third-party documentation
+* HID product terminology
+* Formatting conventions for HID documentation
+* Guidelines for writing user interface text
+
+== Audience and reading goals
+* *Primary readers:* Installers, integrators, site admins, OEM/Partners, and security/IT teams.
+* *Secondary:* Procurement, escalation support, compliance reviewers.
+* *Reading goals:* Get in, do the task, get out—quickly and safely. Favour *scan-ability* and *procedural clarity*.
+
+== Voice and tone (brand-aligned)
+* *Voice:* _Warm, crisp, helpful._ Start with the user’s goal; keep sentences short; write like a person.
+* *Tone:* Adapt to context—calm/assuring for safety, encouraging for procedures, neutral/precise for reference.
+* *Do:* Lead with outcomes, use plain words, keep choices and next steps obvious.
+* *Don’t:* Use jargon, euphemisms, or blame-the-user phrasing (for example, avoid words such as “simply,” “obviously,” or “clearly” as these could be seen as condescending).
+
+== Language, mechanics, and grammar (US English)
+* *Dialect:* US English spelling and punctuation.
+* *Serial/Oxford comma:* Use it.
+* *Contractions:* Allowed if clarity is preserved.
+* *Second person:* Address the reader as _you_ for procedures.
+* *Headings:* Sentence case (capitalise proper nouns only).
+* *UI terms:* Use the exact UI label.
+* *File system terms:* Use *file name*, *file path*, and *file system* (two words).
+* *Acronyms:* Spell out on first use with acronym in parentheses; use acronym thereafter.
+
+== Numbers, units, dates, and ranges
+* *Numbers:* Spell out one–nine; use numerals for 10+ and with units.
+* *Units:* US units first, SI in parentheses: `0.138 in (3.5 mm)`; be consistent within a document.
+* *Temperatures:* US units first, SI in parentheses: `-30 °F to 150 °F (-35 °C to 66 °C)`.
+* *#For review#* *Dates:* October 17, 2025.
+* *Time:* 12-hour with am/pm; include time zones when relevant to services.
+
+== Terminology, product, and trademark usage
+* *Product names:* Use the registered/correct forms on first use (for example, *HID® Signo™*, *OMNIKEY®*). Subsequent mentions may drop ®/™ where legally permissible; keep capitalisation.
+* *Inclusive language:* Prefer people-first, bias-aware terms; avoid ableist, gendered, or culture-specific idioms.
+* *#For review#* *Governance:* Maintain a centralised terminology list and glossary; PR approval from Tech Pubs + Product/Marketing for changes.
+
+== Information types and when to use them
+* *Concept:* What it is and why it matters; short, skimmable.
+* *Task/Procedure:* Step-by-step with prerequisites and results.
+* *Reference:* Definitive tables, pinouts, specs, parameters.
+* *Troubleshooting:* Symptom → Cause → Resolution.
+* *Release Notes:* What changed, impact, actions required, known issues.
+
+== Task writing standard
+*Principles:*
+* One action per step; start each step with an *imperative verb*.
+* Put *hazard or data-loss warnings* before the affected step.
+* Provide short rationale (“why”) when the action isn’t obvious.
+
+.Pattern
+[source,markdown]
+----
+### Install the reader backplate
+
+**Before you begin**
+- Power is off at the controller.
+- You have the mounting template and #6-32 hardware.
+
+1. Mark the holes using the supplied template.
+2. Drill pilot holes to 3/32 in (2.38 mm).
+3. Route the cable through the opening.
+4. Fasten the backplate with two #6-32 × 3/8 in screws (9.5 mm).
+
+> **Warning — Electric shock risk**
+> Disconnect power before wiring. Failure to follow these instructions could result in serious injury or death.
+
+**Result**: The backplate is flush and secure.
+----
+
+== Safety, Regulatory, and Legal Statements
+* Use standardised *DANGER / WARNING / CAUTION / NOTICE* blocks (ANSI Z535.6 structure).
+* Regulatory pages (FCC/IC/UL/CE and regional marks): copy approved text *verbatim* and keep in a dedicated appendix; do *not* paraphrase standards.
+* Ensure signage wording/mounting follows applicable ANSI/BHMA door operator standards where relevant.
+* Use approved copyright and trademark lines; keep contact blocks current.
+
+== Glossary and terminology governance
+* Maintain a *product glossary* in the docs repo; update via PR each release.
+* Adopt Product/Marketing naming decisions across all docs for consistency.
+* Cross-check inclusive language with the corporate DEI glossary.
+
+== Structure and navigation
+* One H1 per page/topic; logical H2/H3 depth (avoid deeper than H4).
+* Front matter for web/PDF: title, summary, product, version, doc-ID, locale, owner, updated date.
+* Cross-references: Descriptive link text (“Configure OSDP secure channel”), not “click here”.
+
+== Figures, screenshots, diagrams
+* *Figures:* Number sequentially; sentence-case captions.
+* *Callouts:* Numbered callouts that match references in steps.
+* *Screenshots:* Crop to area of interest; blur PII/serials; avoid text baked into images (localisation-friendly); provide *alt text*.
+* *Photography/iconography:* Follow brand portal guidance.
+
+== Accessibility and inclusion
+* *Readability:* Aim for Grade 8–10.
+* *Alt text:* Required for all non-decorative images; describe purpose not pixels.
+* *Contrast:* Meet WCAG for text in figures/screens.
+* *Language:* Bias-aware, people-first.
+
+== API/Developer docs and code examples
+* Provide minimal, executable examples; preserve API field case.
+* Show HTTP requests/responses; annotate required vs. optional fields; include error examples.
+* Explain authentication; never embed real secrets.
+
+.Example
+[source,http]
+----
+POST /v1/readers/{readerId}/keys
+Authorization: Bearer <token>
+Content-Type: application/json
+----
+[source,json]
+----
+{
+  "keyType": "OSDP",
+  "rotation": "rolling"
+}
+----
+
+== Formatting and markup rules (Markdown)
+* *Headings:* `#` H1 (once), `##` H2, `###` H3, etc.
+* *UI elements:* *Bold* for controls; `Monospace` for code/CLI/field names.
+* *Lists:* Numbered (ordered) lists for sequences.
+* *Tables:* Left‑align text; units in headers where possible.
+* *Admonitions:* Prefer consistent blocks for *Note*, *Important*, *Warning*.
+* *Inline literals:* Use backticks for file names, commands, parameter names.
+* *Line length:* ~100 characters max to reduce diffs.
+
+== Screens, UI text, and microcopy
+* Sentence‑style capitalization, concise, action‑oriented labels.
+* *Error messages:* State the problem, why it happened (if known), and an action.
+* Do not expose internal error codes without a plain‑English explanation.
+
+== Localization readiness
+* Avoid cultural idioms, phrasal verbs that don’t translate cleanly, and text embedded in images.
+* Keep measurements paired (US + SI).
+* Keep UI strings source‑of‑truth in resource files; writers do not hard‑code strings in screenshots.
+* Provide glossary and term lists for localization vendors.
+
+== Governance, workflow, and quality
+.*Definition of Done (every doc):*
+* Clear purpose, correct audience, consistent voice (brand‑aligned).
+* All tasks are test‑run by the writer and a peer.
+* Safety/regulatory reviewed by Product Safety/Compliance (citations to authoritative text attached).
+* Terminology checked against glossary and naming decisions.
+* Accessibility checks (alt text, contrast, headings).
+
+.*Docs‑as‑Code flow (recommended):*
+* Branching: feature branch → PR → SME + Tech Pubs review → build preview → merge.
+* Automated checks:
+** Vale style lints (custom rules for US English, serial comma, heading case, banned words).
+** Link checker and image size checks.
+** Spell check with custom dictionary (product names, acronyms).
+* Change log: Maintain a Revision History table mirroring existing practice in current PLT documents
+
+== Document layout for PDFs and web
+* *Title page:* product name, version, doc‑ID, date, legal.
+* *TOC:* depth to H3.
+* Numbered headings optional for print; avoid over‑numbering on the web.
+* *Appendices:* Regulatory, Specifications, Connector pinouts, Environment ranges.
+
+== Examples (copy/paste‑ready)
+.*Good step vs. bad step*
+. Good: Tighten the terminal screws to 5 in‑lb (0.56 N·m).
+. Bad: Tighten the screws firmly.
+
+.*Cross‑reference*
+. For controller wiring, see #wire-the-osdp-lines.
+
+.Table (pinout)
+[cols="1,1,1,1"]
+|===
+| *Pin* | *Signal* | *Color* | *Function*
+
+| 1
+| D0
+| Green
+| Wiegand Data 0
+
+| 2
+| D1
+| White
+| Wiegand Data 1
+
+| 3
+| GND
+| Black
+| Ground (Return)
+| 4
+| +VDC
+| Red
+| +12 VDC Input
+|===
+
+== Rollout plan
+. Adopt this guide for all new/updated docs starting this release train.
+. *Linting*: Add Vale rules to enforce the most error‑prone items (heading case, banned words, serial comma).
+. *Glossary*: Seed with current product and partner terms; require PR approval from Tech Pubs + Product Marketing for changes.
+. *Templates*: Publish the front‑matter and release‑notes skeletons to your doc starter kit repo.
+. *Backlog*: Triage top 10 existing titles for quick wins (terminology, headings, safety blocks).
+
+== Quick “sticky rules” (print this)
+* US English always; serial comma; sentence‑case headings.
+* One action per step; warn before harm.
+* US units first; SI in parentheses.
+* Use exact UI labels; avoid jargon.
+* Follow brand voice: warm, crisp, helpful.
+* Don’t paraphrase standards; cite approved regulatory text.
